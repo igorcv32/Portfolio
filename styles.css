@@ -694,7 +694,7 @@ footer p {
     margin-top: 3rem;
 }
 
-.certification-card {
+.certification-card-google, .certification-card-alura, .certification-card-microsoft, .certification-card-udemy {
     background-color: var(--primary-color);
     border-radius: 15px;
     padding: 2rem;
@@ -704,7 +704,10 @@ footer p {
     overflow: hidden;
 }
 
-.certification-card::before {
+.certification-card-google::before, 
+.certification-card-alura::before, 
+.certification-card-microsoft::before, 
+.certification-card-udemy::before {
     content: '';
     position: absolute;
     top: 0;
@@ -717,51 +720,75 @@ footer p {
     transform-origin: bottom;
 }
 
-.certification-card:hover {
+.certification-card-google:hover, 
+.certification-card-alura:hover, 
+.certification-card-microsoft:hover, 
+.certification-card-udemy:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px var(--shadow-color);
     border-color: var(--secondary-color);
 }
 
-.certification-card:hover::before {
+.certification-card-google:hover::before, 
+.certification-card-alura:hover::before, 
+.certification-card-microsoft:hover::before, 
+.certification-card-udemy:hover::before {
     transform: scaleY(1);
 }
 
-.certification-card .institution {
+.certification-card-google .institution, 
+.certification-card-alura .institution, 
+.certification-card-microsoft .institution, 
+.certification-card-udemy .institution {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
-.certification-card .institution img {
+.certification-card-google .institution img, 
+.certification-card-alura .institution img, 
+.certification-card-microsoft .institution img, 
+.certification-card-udemy .institution img {
     width: 40px;
     height: 40px;
     border-radius: 8px;
     object-fit: cover;
 }
 
-.certification-card h3 {
+.certification-card-google h3, 
+.certification-card-alura h3, 
+.certification-card-microsoft h3, 
+.certification-card-udemy h3 {
     color: var(--secondary-color);
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
 
-.certification-card .date {
+.certification-card-google .date, 
+.certification-card-alura .date, 
+.certification-card-microsoft .date, 
+.certification-card-udemy .date {
     font-size: 0.9rem;
     color: var(--text-color);
     opacity: 0.8;
     margin-bottom: 1rem;
 }
 
-.certification-card p {
+.certification-card-google p, 
+.certification-card-alura p, 
+.certification-card-microsoft p, 
+.certification-card-udemy p {
     color: var(--text-color);
     opacity: 0.9;
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
 
-.certification-link {
+.certification-link-google, 
+.certification-link-alura, 
+.certification-link-microsoft, 
+.certification-link-udemy {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -771,11 +798,17 @@ footer p {
     transition: all 0.3s;
 }
 
-.certification-link:hover {
+.certification-link-google:hover, 
+.certification-link-alura:hover, 
+.certification-link-microsoft:hover, 
+.certification-link-udemy:hover {
     transform: translateX(5px);
 }
 
-.certification-link i {
+.certification-link-google i, 
+.certification-link-alura i, 
+.certification-link-microsoft i, 
+.certification-link-udemy i {
     font-size: 0.8rem;
 }
 
