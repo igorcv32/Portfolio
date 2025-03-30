@@ -35,25 +35,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 
-    // Formulário de contato
+    // Formulário de contato com EmailJS
     const contactForm = document.getElementById('contactForm');
     const formMessage = document.querySelector('.form-message');
+    const submitButton = contactForm.querySelector('button[type="submit"]');
 
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Simulação de envio do formulário
-        const formData = new FormData(contactForm);
-        formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entrarei em contato.';
-        formMessage.className = 'form-message success';
+        // Desabilitar o botão e mostrar loading
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         
-        // Limpar formulário
-        contactForm.reset();
+        // Coletar dados do formulário
+        const formData = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
 
-        // Limpar mensagem após 5 segundos
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
+        // Enviar e-mail usando EmailJS
+        emailjs.send('service_onwmky8', 'template_ih2cawk', formData)
+            .then(function() {
+                // Sucesso
+                formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entrarei em contato.';
+                formMessage.className = 'form-message success';
+                contactForm.reset();
+            })
+            .catch(function(error) {
+                // Erro
+                console.error('Erro EmailJS:', error);
+                formMessage.textContent = `Erro ao enviar mensagem: ${error.text || 'Por favor, tente novamente.'}`;
+                formMessage.className = 'form-message error';
+            })
+            .finally(function() {
+                // Reabilitar o botão e restaurar texto
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Mensagem';
+                
+                // Limpar mensagem após 5 segundos
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            });
     });
 
     // Alternância de tema

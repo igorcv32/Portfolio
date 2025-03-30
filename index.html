@@ -7,6 +7,17 @@
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "k90cErcTmMoZk4Ppj",
+      });
+   })();
+</script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta name="description" content="Portfólio de Igor Carvalho - Desenvolvedor Front-End">
@@ -326,27 +337,6 @@
 
             document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 
-            // Formulário de contato
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.querySelector('.form-message');
-
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Simulação de envio do formulário
-                const formData = new FormData(contactForm);
-                formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entrarei em contato.';
-                formMessage.className = 'form-message success';
-                
-                // Limpar formulário
-                contactForm.reset();
-
-                // Limpar mensagem após 5 segundos
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            });
-
             // Alternância de tema
             const themeToggle = document.querySelector('.theme-toggle');
             const html = document.documentElement;
@@ -384,5 +374,6 @@
             prefersDark.addListener(handleSystemThemeChange);
         });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
