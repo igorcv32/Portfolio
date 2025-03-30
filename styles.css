@@ -63,6 +63,15 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+[data-theme="light"] header {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .nav-links {
+    background-color: var(--card-bg);
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -87,7 +96,6 @@ nav {
     text-decoration: none;
     transition: all 0.3s;
     position: relative;
-    padding-bottom: 5px;
 }
 
 .nav-links a::after {
@@ -95,10 +103,11 @@ nav {
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: 0;
+    bottom: -5px;
     left: 0;
     background-color: var(--secondary-color);
-    transition: width 0.3s;
+    transition: width 0.3s ease;
+    transform-origin: left;
 }
 
 .nav-links a:hover::after {
@@ -107,6 +116,10 @@ nav {
 
 .nav-links a:hover {
     color: var(--secondary-color);
+}
+
+[data-theme="light"] .nav-links a::after {
+    background-color: var(--secondary-color);
 }
 
 .hero {
@@ -822,4 +835,48 @@ footer p {
     .certifications-grid {
         grid-template-columns: 1fr;
     }
+}
+
+[data-theme="light"] .hero-text p {
+    color: #666666;
+}
+
+[data-theme="light"] .project-info-spotify p, 
+[data-theme="light"] .project-info-login p, 
+[data-theme="light"] .project-info-bonsai p, 
+[data-theme="light"] .project-info-pulse p {
+    color: #666666;
+}
+
+[data-theme="light"] .about-text p {
+    color: #666666;
+}
+
+[data-theme="light"] .certification-card-google p, 
+[data-theme="light"] .certification-card-alura p, 
+[data-theme="light"] .certification-card-microsoft p, 
+[data-theme="light"] .certification-card-udemy p {
+    color: #666666;
+}
+
+[data-theme="light"] .contact-content p {
+    color: #666666;
+}
+
+[data-theme="light"] .contact-item p, 
+[data-theme="light"] .contact-item a {
+    color: #666666;
+}
+
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+    color: #333333;
+}
+
+[data-theme="light"] .form-message.success {
+    color: #008B93;
+}
+
+[data-theme="light"] .form-message.error {
+    color: #ff0000;
 } 
