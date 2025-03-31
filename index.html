@@ -108,6 +108,15 @@
                             <p>Mais um projeto retirado do site <a href="https://www.frontendpractice.com/projects/pulse">Frontend Practice</a>. Feito manualmente com HTML, CSS e JavaScript, tendo um design próprio sem que ficasse exatamente igual ao original.</p>
                         </div>
                     </div>
+                    <div class="project-card-daredevil">
+                        <a href="https://igorcv32.github.io/Site-Demolidor-Advocacia/" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/Nelson & Murdock.png" alt="Dashboard">
+                        </a>
+                        <div class="project-info-pulse">
+                            <h3>Demolidor | Site de Escritório de Advocacia</h3>
+                            <p>Projeto autoral inspirado no personagem de histórias em quadrinhos: Demolidor. Um site do escritório de advocacia dos personagens Matt Murdock, Foggy Nelson e Karen Page, utilizando a paleta de cores do personagem supracitado com uma temática minimalista.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -336,42 +345,6 @@
             });
 
             document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
-
-            // Alternância de tema
-            const themeToggle = document.querySelector('.theme-toggle');
-            const html = document.documentElement;
-            const themeIcon = themeToggle.querySelector('i');
-
-            // Verificar tema salvo
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            html.setAttribute('data-theme', savedTheme);
-            updateThemeIcon(savedTheme);
-
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateThemeIcon(newTheme);
-            });
-
-            function updateThemeIcon(theme) {
-                themeIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-            }
-
-            // Detectar preferência do sistema
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-            
-            function handleSystemThemeChange(e) {
-                if (!localStorage.getItem('theme')) {
-                    const newTheme = e.matches ? 'dark' : 'light';
-                    html.setAttribute('data-theme', newTheme);
-                    updateThemeIcon(newTheme);
-                }
-            }
-
-            prefersDark.addListener(handleSystemThemeChange);
         });
     </script>
     <script src="script.js"></script>

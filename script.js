@@ -86,34 +86,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const html = document.documentElement;
     const themeIcon = themeToggle.querySelector('i');
 
-    // Verificar tema salvo
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-    });
-
+    // Função para atualizar o ícone do tema
     function updateThemeIcon(theme) {
         themeIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     }
 
-    // Detectar preferência do sistema
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    function handleSystemThemeChange(e) {
-        if (!localStorage.getItem('theme')) {
-            const newTheme = e.matches ? 'dark' : 'light';
-            html.setAttribute('data-theme', newTheme);
-            updateThemeIcon(newTheme);
-        }
+    // Função para aplicar o tema
+    function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeIcon(theme);
     }
 
-    prefersDark.addListener(handleSystemThemeChange);
+    // Verificar tema salvo ou preferência do sistema
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        applyTheme(prefersDark.matches ? 'dark' : 'light');
+    }
+
+    // Alternar tema ao clicar no botão
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+    });
+
+    // Detectar mudança na preferência do sistema
+    prefersDark.addListener((e) => {
+        if (!localStorage.getItem('theme')) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
 });
